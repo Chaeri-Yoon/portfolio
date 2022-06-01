@@ -1,8 +1,9 @@
-import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './components/Header';
 import Section from './components/Section';
+import About from './sections/About';
+import Home from './sections/Home';
 import GlobalStyles from './styles/GlobalStyles';
 
 const Container = styled.div`
@@ -13,7 +14,6 @@ const Container = styled.div`
   align-items: center;
 `;
 const Main = styled.main`
-  padding-top: 36px;
   width: 100%;
   
   display: flex;
@@ -21,7 +21,6 @@ const Main = styled.main`
   justify-content: flex-start;
   align-items: center;
 `;
-
 
 function App() {
   return (
@@ -32,10 +31,10 @@ function App() {
           <Header />
           <Main>
             <Section id="home">
-              Home
+              <Home />
             </Section>
             <Section id="about">
-              About
+              <About />
             </Section>
             <Section id="experience">
               Experience

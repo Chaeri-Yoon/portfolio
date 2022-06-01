@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import './reset.css';
-import './variables.css';
 
 const GlobalStyles = createGlobalStyle`
     *{
@@ -13,9 +12,6 @@ const GlobalStyles = createGlobalStyle`
         justify-content: center;
         align-items: center;
     }
-    body{
-        padding: var(--body-padding);
-    }
     a, a:visited{
         color: inherit;
         text-decoration: none;
@@ -23,6 +19,11 @@ const GlobalStyles = createGlobalStyle`
     button{
         cursor: pointer;
         border: none;
+    }
+    .underlined{
+        padding: 0.5em 0;
+        font-size: 1em;
+        font-weight: 600;
     }
 `;
 export default GlobalStyles;

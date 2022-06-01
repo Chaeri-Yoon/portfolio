@@ -1,14 +1,19 @@
 import styled from "styled-components"
+import '../styles/variables.css';
 
 const Container = styled.div`
     width: 100%;
-    height: 500px;
-
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    &::before{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 3.625em;
+    }
 `;
-export default ({ children, id }: { children: any, id: string }) => {
+export default ({ children, id }: { children?: any, id: string }) => {
     return (
         <Container id={id}>
             {children}
