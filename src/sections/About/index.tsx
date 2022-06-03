@@ -7,7 +7,7 @@ import Skills from "./Skills";
 const Container = styled.div`
     width: 100%;
     aspect-ratio: 15 / 4;
-    padding: 0.8em var(--body-padding);
+    padding: 3.625em var(--body-padding);
 
     display: flex;
     justify-content: space-between;

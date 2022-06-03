@@ -37,10 +37,10 @@ function App() {
               <About />
             </Section>
             <Section id="experience">
-              Experience
+              <About />
             </Section>
             <Section id="projects">
-              Projects
+              <About />
             </Section>
           </Main>
         </Router>

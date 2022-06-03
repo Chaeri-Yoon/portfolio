@@ -19,7 +19,7 @@ const Title = styled.span`
 `;
 const SkillsList = styled.ul`
     display: grid;
-    grid-template-columns: repeat(auto-fill, 20%);
+    grid-template-columns: repeat(auto-fill, 10%);
     column-gap: 1em;
     list-style-type: none;
 `;
