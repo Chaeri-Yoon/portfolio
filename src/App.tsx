@@ -5,6 +5,7 @@ import Section from './components/Section';
 import About from './sections/About';
 import Home from './sections/Home';
 import GlobalStyles from './styles/GlobalStyles';
+import './styles/variables.css';
 
 const Container = styled.div`
   width: 100%;
@@ -20,6 +21,10 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: var(--header-height);
+  & > div:last-child{
+    margin-bottom: var(--header-height);
+  }
 `;
 
 function App() {

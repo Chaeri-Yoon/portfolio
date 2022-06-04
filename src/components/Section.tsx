@@ -6,7 +6,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    scroll-margin-top: 3.625em;
+    scroll-margin-top: calc(var(--header-height) * 2);
 `;
 export default ({ children, id }: { children?: any, id: string }) => {
     return (

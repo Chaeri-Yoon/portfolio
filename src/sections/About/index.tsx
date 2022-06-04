@@ -7,15 +7,14 @@ import Skills from "./Skills";
 const Container = styled.div`
     width: 100%;
     aspect-ratio: 15 / 4;
-    padding: 3.625em var(--body-padding);
-
+    padding: 0 var(--body-padding);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 `;
 const ProfileImage = styled.div`
     width: 20%;
-    aspect-ratio: 3 / 4;
+    height: 100%;
     background-color: pink;
 `;
 const Content = styled.div`
