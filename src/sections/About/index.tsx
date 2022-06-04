@@ -13,8 +13,8 @@ const Container = styled.div`
     align-items: flex-start;
 `;
 const ProfileImage = styled.div`
-    width: 20%;
     height: 100%;
+    aspect-ratio: 3/ 4;
     background-color: pink;
 `;
 const Content = styled.div`
