@@ -2,11 +2,21 @@ import styled from "styled-components"
 import '../styles/variables.css';
 
 const Container = styled.div`
+    padding: var(--header-height) 0 var(--header-height) 0;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    scroll-margin-top: calc(var(--header-height) * 2);
+    scroll-margin-top: calc(var(--header-height));
+    &:first-child{
+        padding: 0;
+    }
+    &:nth-child(2n){
+        background-color: #F5F5F5;
+    }
+    &:not(:nth-child(2n)){
+        background-color: white;
+    }
 `;
 const Title = styled.h1`
     margin-top: 0;

@@ -22,12 +22,6 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: var(--header-height);
-  & > div{
-    &:last-child{
-      margin-bottom: var(--header-height);
-    }
-  }
 `;
 
 function App() {
@@ -48,7 +42,6 @@ function App() {
               <Experience />
             </Section>
             <Section id="projects" title="Projects">
-              <About />
             </Section>
           </Main>
         </Router>
