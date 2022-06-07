@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import ModeButtons, { ModeButton } from "../../components/ModeButtons";
 import '../../styles/variables.css';
 import AboutInfo from "./AboutInfo";
 import Skills from "./Skills";
@@ -24,20 +25,8 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-`;
-const ModeButtons = styled.div`
-    margin-bottom: 1em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-const ModeButton = styled.button<{ isactive: string }>`
-    width: 50%;
-    text-align: center;
-    background-color: transparent;
-    & > span{
-        border-bottom: ${({ isactive }) => isactive === 'true' ? '2px solid pink' : 'none'};
+    & > div{
+        width: 100%;
     }
 `;
 
@@ -49,8 +38,8 @@ export default () => {
             <ProfileImage />
             <Content>
                 <ModeButtons>
-                    <ModeButton isactive={`${mode === 'ABOUT'}`} onClick={() => handleModeClick('ABOUT')}><span className="underlined">ABOUT</span></ModeButton>
-                    <ModeButton isactive={`${mode === 'SKILLS'}`} onClick={() => handleModeClick('SKILLS')}><span className="underlined">SKILLS</span></ModeButton>
+                    <ModeButton isactive={`${mode === 'ABOUT'}`} text='ABOUT' handleModeClick={() => handleModeClick('ABOUT')} />
+                    <ModeButton isactive={`${mode === 'SKILLS'}`} text='SKILLS' handleModeClick={() => handleModeClick('SKILLS')} />
                 </ModeButtons>
                 {mode === 'ABOUT' ? <AboutInfo /> : <Skills />}
             </Content>

@@ -5,6 +5,7 @@ import Section from './components/Section';
 import About from './sections/About';
 import Experience from './sections/Experience';
 import Home from './sections/Home';
+import Project from './sections/Project';
 import GlobalStyles from './styles/GlobalStyles';
 import './styles/variables.css';
 
@@ -42,6 +43,7 @@ function App() {
               <Experience />
             </Section>
             <Section id="projects" title="Projects">
+              <Project />
             </Section>
           </Main>
         </Router>
