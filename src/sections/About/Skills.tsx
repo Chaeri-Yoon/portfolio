@@ -40,17 +40,17 @@ export default () => {
             <Skills>
                 <Title>Top Skills</Title>
                 <SkillsList>
-                    <Skill><img src="/images/htmlcssjs.png" /></Skill>
-                    <Skill><img src="/images/nodejs.png" /></Skill>
-                    <Skill><img src="/images/unity.png" /></Skill>
+                    <Skill><img src="/images/skills/htmlcssjs.png" /></Skill>
+                    <Skill><img src="/images/skills/nodejs.png" /></Skill>
+                    <Skill><img src="/images/skills/unity.png" /></Skill>
                 </SkillsList>
             </Skills>
             <Skills>
                 <Title>Experience</Title>
                 <SkillsList>
-                    <Skill><img src="/images/htmlcssjs.png" /></Skill>
-                    <Skill><img src="/images/nodejs.png" /></Skill>
-                    <Skill><img src="/images/unity.png" /></Skill>
+                    <Skill><img src="/images/skills/htmlcssjs.png" /></Skill>
+                    <Skill><img src="/images/skills/nodejs.png" /></Skill>
+                    <Skill><img src="/images/skills/unity.png" /></Skill>
                 </SkillsList>
             </Skills>
         </Container>

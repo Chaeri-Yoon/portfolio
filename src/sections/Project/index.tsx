@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ModeButtons, { ModeButton } from "../../components/ModeButtons";
 import Web from "./Web";
-import Xr from "./Xr";
+import XR from "./XR";
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -22,23 +22,23 @@ const ProjectList = styled.ul`
     grid-template-columns: repeat(3, 20%);
     column-gap: 1em;
     row-gap: 1em;
-    & > li{
-        width: 100%;
-        aspect-ratio: 1 / 1;
-    }
 `;
 
 export default () => {
     const [mode, setMode] = useState<'XR' | 'WEB'>('XR');
     const handleModeClick = (value: 'XR' | 'WEB') => setMode(value);
+    const handleProjectClick = (event: React.MouseEvent<HTMLElement>) => {
+        const { id } = event.target as HTMLElement;
+        console.log(id);
+    }
     return (
         <Container>
             <ModeButtons>
                 <ModeButton isactive={`${mode === 'XR'}`} text='XR' handleModeClick={() => handleModeClick('XR')} />
                 <ModeButton isactive={`${mode === 'WEB'}`} text='WEB' handleModeClick={() => handleModeClick('WEB')} />
             </ModeButtons>
-            <ProjectList>
-                {mode === 'XR' ? <Xr /> : <Web />}
+            <ProjectList onClick={handleProjectClick}>
+                {mode === 'XR' ? <XR /> : <Web />}
             </ProjectList>
         </Container>
     )
