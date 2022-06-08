@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Modal from "../../components/Modal";
 import ModeButtons, { ModeButton } from "../../components/ModeButtons";
+import ProjectDetail from "./ProjectDetail";
 import Web from "./Web";
 import XR from "./XR";
 const Container = styled.div`
@@ -26,11 +28,15 @@ const ProjectList = styled.ul`
 
 export default () => {
     const [mode, setMode] = useState<'XR' | 'WEB'>('XR');
+    const [projectNum, setProjectNum] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const handleModeClick = (value: 'XR' | 'WEB') => setMode(value);
     const handleProjectClick = (event: React.MouseEvent<HTMLElement>) => {
         const { id } = event.target as HTMLElement;
-        console.log(id);
+        setProjectNum(id.split('/')[1]);
+        setIsModalOpen(true);
     }
+    const handleProjectModalClose = () => setIsModalOpen(false);
     return (
         <Container>
             <ModeButtons>
@@ -40,6 +46,11 @@ export default () => {
             <ProjectList onClick={handleProjectClick}>
                 {mode === 'XR' ? <XR /> : <Web />}
             </ProjectList>
+            {isModalOpen && (
+                <Modal handleClose={handleProjectModalClose}>
+                    <ProjectDetail category={mode} projectNum={projectNum} />
+                </Modal>
+            )}
         </Container>
     )
 }
