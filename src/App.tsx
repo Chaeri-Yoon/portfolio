@@ -7,7 +7,6 @@ import Experience from './sections/Experience';
 import Home from './sections/Home';
 import Project from './sections/Project';
 import GlobalStyles from './styles/GlobalStyles';
-import './styles/variables.css';
 
 const Container = styled.div`
   width: 100%;

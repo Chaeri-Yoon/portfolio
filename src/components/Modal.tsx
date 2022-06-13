@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom"
 import styled from "styled-components";
 
@@ -21,8 +22,12 @@ const Container = styled.div`
     border-radius: 1em;
 `;
 export default (props: any) => {
+    const handleClose = (event: React.MouseEvent<HTMLElement>) => {
+        if (event.target !== event.currentTarget) return;
+        props.handleClose();
+    }
     return ReactDOM.createPortal(
-        <Background onClick={props.handleClose}>
+        <Background onClick={handleClose}>
             <Container>
                 {props.children}
             </Container>

@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
         border: none;
     }
     .underlined{
-        padding: 0.5em 0;
+        padding: 0.25em 0;
         font-size: 1em;
         font-weight: 600;
     }

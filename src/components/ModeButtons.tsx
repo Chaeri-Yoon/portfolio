@@ -6,12 +6,28 @@ const ModeButtons = styled.div`
     justify-content: center;
     align-items: center;
 `;
-const Button = styled.button<{ isactive: string }>`
-    width: 50%;
+const Button = styled.button<{ isactive: string, kind?: string }>`
     text-align: center;
     background-color: transparent;
+    
     & > span{
         border-bottom: ${({ isactive }) => isactive === 'true' ? '2px solid pink' : 'none'};
+    }
+`;
+const ProjectTabButton = styled(Button)`
+    margin-bottom: 0.5em;
+    width: 100%;
+    & > span{
+        border-bottom-color: #f97087;
+        color: white;
+    }
+`;
+const SectionModeButton = styled(Button)`
+    margin-bottom:  0;
+    width: 50%;
+    & > span{
+        border-bottom-color: pink;
+        color: black;
     }
 `;
 export default ({ children }: any) => {
@@ -21,8 +37,11 @@ export default ({ children }: any) => {
         </ModeButtons>
     )
 }
-export const ModeButton = ({ isactive, text, handleModeClick }: { isactive: string, text: string, handleModeClick: () => void }) => {
+export const ModeButton = ({ isactive, text, handleModeClick, kind }: { isactive: string, text: string, handleModeClick: () => void, kind: 'ProjectDetail' | 'SectionMode' }) => {
     return (
-        <Button isactive={isactive} onClick={handleModeClick}><span className="underlined">{text}</span></Button>
+        <>
+            {kind === 'ProjectDetail' && <ProjectTabButton isactive={isactive} onClick={handleModeClick} kind={kind}><span className="underlined">{text}</span></ProjectTabButton>}
+            {kind === 'SectionMode' && <SectionModeButton isactive={isactive} onClick={handleModeClick} kind={kind}><span className="underlined">{text}</span></SectionModeButton>}
+        </>
     )
 }

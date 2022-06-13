@@ -40,8 +40,8 @@ export default () => {
     return (
         <Container>
             <ModeButtons>
-                <ModeButton isactive={`${mode === 'XR'}`} text='XR' handleModeClick={() => handleModeClick('XR')} />
-                <ModeButton isactive={`${mode === 'WEB'}`} text='WEB' handleModeClick={() => handleModeClick('WEB')} />
+                <ModeButton isactive={`${mode === 'XR'}`} text='XR' kind='SectionMode' handleModeClick={() => handleModeClick('XR')} />
+                <ModeButton isactive={`${mode === 'WEB'}`} text='WEB' kind='SectionMode' handleModeClick={() => handleModeClick('WEB')} />
             </ModeButtons>
             <ProjectList onClick={handleProjectClick}>
                 {mode === 'XR' ? <XR /> : <Web />}

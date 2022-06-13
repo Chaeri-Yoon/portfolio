@@ -38,8 +38,8 @@ export default () => {
             <ProfileImage />
             <Content>
                 <ModeButtons>
-                    <ModeButton isactive={`${mode === 'ABOUT'}`} text='ABOUT' handleModeClick={() => handleModeClick('ABOUT')} />
-                    <ModeButton isactive={`${mode === 'SKILLS'}`} text='SKILLS' handleModeClick={() => handleModeClick('SKILLS')} />
+                    <ModeButton isactive={`${mode === 'ABOUT'}`} text='ABOUT' kind='SectionMode' handleModeClick={() => handleModeClick('ABOUT')} />
+                    <ModeButton isactive={`${mode === 'SKILLS'}`} text='SKILLS' kind='SectionMode' handleModeClick={() => handleModeClick('SKILLS')} />
                 </ModeButtons>
                 {mode === 'ABOUT' ? <AboutInfo /> : <Skills />}
             </Content>
