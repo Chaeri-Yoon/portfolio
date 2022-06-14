@@ -9,6 +9,7 @@ const ModeButtons = styled.div`
 const Button = styled.button<{ isactive: string, kind?: string }>`
     text-align: center;
     background-color: transparent;
+    font-size: 1em;
     
     & > span{
         border-bottom: ${({ isactive }) => isactive === 'true' ? '2px solid pink' : 'none'};
@@ -16,7 +17,7 @@ const Button = styled.button<{ isactive: string, kind?: string }>`
 `;
 const ProjectTabButton = styled(Button)`
     margin-bottom: 0.5em;
-    width: 100%;
+    font-size: 0.8em;
     & > span{
         border-bottom-color: #f97087;
         color: white;

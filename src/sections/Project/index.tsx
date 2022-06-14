@@ -25,30 +25,30 @@ const ProjectList = styled.ul`
     column-gap: 1em;
     row-gap: 1em;
 `;
-
+type ProjectCategory = 'XR' | 'WEB';
 export default () => {
-    const [mode, setMode] = useState<'XR' | 'WEB'>('XR');
-    const [projectNum, setProjectNum] = useState('');
+    const [category, setCategory] = useState<ProjectCategory>('XR');
+    const [projectId, setProjectId] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleModeClick = (value: 'XR' | 'WEB') => setMode(value);
+    const handleCategoryChange = (value: ProjectCategory) => setCategory(value);
     const handleProjectClick = (event: React.MouseEvent<HTMLElement>) => {
         const { id } = event.target as HTMLElement;
-        setProjectNum(id.split('/')[1]);
+        setProjectId(id);
         setIsModalOpen(true);
     }
     const handleProjectModalClose = () => setIsModalOpen(false);
     return (
         <Container>
             <ModeButtons>
-                <ModeButton isactive={`${mode === 'XR'}`} text='XR' kind='SectionMode' handleModeClick={() => handleModeClick('XR')} />
-                <ModeButton isactive={`${mode === 'WEB'}`} text='WEB' kind='SectionMode' handleModeClick={() => handleModeClick('WEB')} />
+                <ModeButton isactive={`${category === 'XR'}`} text='XR' kind='SectionMode' handleModeClick={() => handleCategoryChange('XR')} />
+                <ModeButton isactive={`${category === 'WEB'}`} text='WEB' kind='SectionMode' handleModeClick={() => handleCategoryChange('WEB')} />
             </ModeButtons>
             <ProjectList onClick={handleProjectClick}>
-                {mode === 'XR' ? <XR /> : <Web />}
+                {category === 'XR' ? <XR /> : <Web />}
             </ProjectList>
             {isModalOpen && (
                 <Modal handleClose={handleProjectModalClose}>
-                    <ProjectDetail category={mode} projectNum={projectNum} />
+                    <ProjectDetail projectId={projectId} />
                 </Modal>
             )}
         </Container>

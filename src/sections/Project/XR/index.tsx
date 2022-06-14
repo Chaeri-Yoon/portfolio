@@ -3,12 +3,11 @@ import ProjectItem from '../ProjectItem';
 export default () => {
     return (
         <>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='xr/1'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='xr/2'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='xr/3'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='xr/4'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='xr/5'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='xr/6'></ProjectItem>
+            <ProjectItem thumbnail='/skills/nodejs.png' projectName='k21'></ProjectItem>
+            <ProjectItem thumbnail='/skills/nodejs.png' projectName='suspension'></ProjectItem>
+            <ProjectItem thumbnail='/skills/nodejs.png' projectName='singu'></ProjectItem>
+            <ProjectItem thumbnail='/skills/nodejs.png' projectName='crane'></ProjectItem>
+            <ProjectItem thumbnail='/skills/nodejs.png' projectName='governor'></ProjectItem>
         </>
     )
 }
