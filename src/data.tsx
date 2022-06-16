@@ -1,17 +1,20 @@
 import { ReactElement, useEffect, useRef } from "react";
 import styled from "styled-components";
-import PageButtons from "./PageButtons";
+import PageButtons from "./sections/Project/ProjectDetail/About/PageButtons";
 
 const Video = styled.video`
     width: 100%;
     height: 100%;
     background-color: black;
 `;
-interface IData {
+// Project Data
+interface IDataReturn {
     Visual: ReactElement;
     description: string;
+    skills: string[];
 }
-const K21 = (curPageNum: number): IData => {
+type IData = (curPageNum?: number) => IDataReturn;
+const K21: IData = (curPageNum = 0) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const visualSources = [
         <source src='/videos/projects/about/K21_1.mp4' />,
@@ -33,9 +36,42 @@ const K21 = (curPageNum: number): IData => {
                 <PageButtons numOfPages={3} curPageNum={curPageNum} />
             </>
         ),
-        description: descriptionSources[curPageNum]
+        description: descriptionSources[curPageNum],
+        skills: [skills.UNITY, skills.VUFORIA]
     }
 }
-export default {
+export const projects = {
     K21
+}
+export const skills = {
+    HTMLCSSJS: "htmlcssjs",
+    NODEJS: "nodejs",
+    UNITY: "unity",
+    VUFORIA: "vuforia",
+
+    get topList() {
+        return [
+            this.UNITY,
+            this.VUFORIA
+        ]
+    },
+    get experienceList() {
+        return [
+            this.HTMLCSSJS,
+            this.NODEJS,
+            this.VUFORIA
+        ]
+    },
+    get xrList() {
+        return [
+            this.UNITY,
+            this.VUFORIA
+        ]
+    },
+    get webList() {
+        return [
+            this.HTMLCSSJS,
+            this.NODEJS
+        ]
+    }
 }

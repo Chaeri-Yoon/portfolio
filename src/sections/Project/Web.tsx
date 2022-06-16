@@ -1,4 +1,4 @@
-import ProjectItem from '../ProjectItem';
+import ProjectItem from './ProjectItem';
 
 export default () => {
     return (

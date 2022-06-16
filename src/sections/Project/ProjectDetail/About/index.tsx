@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import data from "./data";
+import { projects } from "../../../../data";
 
 const AboutContainer = styled.div`
     width: 70%;
@@ -46,10 +46,10 @@ export default ({ projectId }: { projectId: string }) => {
     return (
         <AboutContainer>
             <AboutVisual onClick={handlePageNumButton}>
-                {projectId === 'K21' && data.K21(curPageNum).Visual}
+                {projectId === 'K21' && projects.K21(curPageNum).Visual}
             </AboutVisual>
             <AboutDescription>
-                <span>{projectId === 'K21' && data.K21(curPageNum).description}</span>
+                <span>{projectId === 'K21' && projects.K21(curPageNum).description}</span>
             </AboutDescription>
         </AboutContainer>
     )

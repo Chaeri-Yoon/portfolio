@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import SkillsList, { Skill } from "../../components/SkillsList";
+import { skills } from "../../data";
 
 const Container = styled.div`
     width: 100%;
@@ -17,40 +19,19 @@ const Title = styled.span`
     font-size: 1.3em;
     font-weight: bold;
 `;
-const SkillsList = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 10%);
-    column-gap: 1em;
-    list-style-type: none;
-`;
-const Skill = styled.li`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    & > img{
-        border: 1px solid rgba(0, 0, 0, .3);
-        border-radius: 50%;
-        width: 100%;
-        aspect-ratio: 1 / 1;
-    }
-`;
 export default () => {
     return (
         <Container>
             <Skills>
                 <Title>Top Skills</Title>
                 <SkillsList>
-                    <Skill><img src="/images/skills/htmlcssjs.png" /></Skill>
-                    <Skill><img src="/images/skills/nodejs.png" /></Skill>
-                    <Skill><img src="/images/skills/unity.png" /></Skill>
+                    {skills.topList.map((skill, i) => <Skill key={i} skillname={skill} />)}
                 </SkillsList>
             </Skills>
             <Skills>
                 <Title>Experience</Title>
                 <SkillsList>
-                    <Skill><img src="/images/skills/htmlcssjs.png" /></Skill>
-                    <Skill><img src="/images/skills/nodejs.png" /></Skill>
-                    <Skill><img src="/images/skills/unity.png" /></Skill>
+                    {skills.experienceList.map((skill, i) => <Skill key={i} skillname={skill} />)}
                 </SkillsList>
             </Skills>
         </Container>
