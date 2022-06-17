@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useRef } from "react";
 import styled from "styled-components";
-import PageButtons from "./sections/Project/ProjectDetail/About/PageButtons";
+import PageButtons from "@sections/project/ProjectDetail/About/PageButtons";
 
 const Video = styled.video`
     width: 100%;

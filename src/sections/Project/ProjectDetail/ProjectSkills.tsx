@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ItemsList, Skill } from "../../../components/SkillsList";
-import { projects } from "../../../data";
-import '../../../styles/variables.css'
+import { ItemsList, Skill } from "@components/SkillsList";
+import { projects } from "@data";
+import '@styles/variables.css'
 
 const Container = styled.div`
     padding: calc(var(--body-padding) / 2);

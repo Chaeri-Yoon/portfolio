@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import SkillsList, { Skill } from "../../components/SkillsList";
-import { skills } from "../../data";
+import SkillsList, { Skill } from "@components/SkillsList";
+import { skills } from "@data";
 
 const Container = styled.div`
     width: 100%;

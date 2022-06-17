@@ -1,20 +1,18 @@
 import { useState } from "react";
 import styled from "styled-components";
-import ModeButtons, { ModeButton } from "../../components/ModeButtons";
-import '../../styles/variables.css';
-import AboutInfo from "./AboutInfo";
-import Skills from "./Skills";
+import ModeButtons, { ModeButton } from "@components/ModeButtons";
+import AboutInfo from "@sections/about/AboutInfo";
+import Skills from "@sections/about/Skills";
 
 const Container = styled.div`
     width: 100%;
-    aspect-ratio: 15 / 4;
     padding: 0 var(--body-padding);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 `;
 const ProfileImage = styled.div`
-    height: 100%;
+    width: 20%;
     aspect-ratio: 3/ 4;
     background-color: pink;
 `;

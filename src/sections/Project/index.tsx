@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Modal from "../../components/Modal";
-import ModeButtons, { ModeButton } from "../../components/ModeButtons";
-import ProjectDetail from "./ProjectDetail";
-import Web from "./Web";
-import XR from "./XR";
+import Modal from "@components/Modal";
+import ModeButtons, { ModeButton } from "@components/ModeButtons";
+import ProjectDetail from "@sections/project/ProjectDetail";
+import Web from "@sections/project/Web";
+import XR from "@sections/project/XR";
 const Container = styled.div`
     width: 100%;
     display: flex;

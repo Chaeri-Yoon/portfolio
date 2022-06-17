@@ -1,12 +1,12 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from './components/Header';
-import Section from './components/Section';
-import About from './sections/About';
-import Experience from './sections/Experience';
-import Home from './sections/Home';
-import Project from './sections/Project';
-import GlobalStyles from './styles/GlobalStyles';
+import Header from '@components/Header'
+import Section from '@components/Section';
+import About from '@sections/about';
+import Experience from '@sections/experience';
+import Home from '@sections/Home';
+import Project from '@sections/project';
+import GlobalStyles from '@styles/GlobalStyles';
 
 const Container = styled.div`
   width: 100%;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Timeline from "./Timeline";
+import Timeline from "@sections/experience/Timeline";
 const Container = styled.div`
     width: 80%;
     display: flex;

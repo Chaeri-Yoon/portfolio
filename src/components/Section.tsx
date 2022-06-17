@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import '../styles/variables.css';
 
 const Container = styled.div`
     padding: var(--header-height) 0 var(--header-height) 0;

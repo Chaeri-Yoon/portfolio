@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components"
-import { ModeButton } from "../../../components/ModeButtons";
-import '../../../styles/variables.css';
-import About from "./About";
-import Skills from "./ProjectSkills";
+import { ModeButton } from "@components/ModeButtons";
+import About from "@sections/project/ProjectDetail/About";
+import ProjectSkills from "@sections/project/ProjectDetail/ProjectSkills";
 
 const Container = styled.div`
     width: 100%;
@@ -63,7 +62,7 @@ export default ({ projectId }: { projectId: string }) => {
                     <About projectId={projectId} />
                 )}
                 {tab === 'SKILLS' && (
-                    <Skills projectId={projectId} />
+                    <ProjectSkills projectId={projectId} />
                 )}
             </Content>
         </Container>

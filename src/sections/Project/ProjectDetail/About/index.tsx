@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { projects } from "../../../../data";
+import { projects } from "@data";
 
 const AboutContainer = styled.div`
     width: 70%;

@@ -1,4 +1,4 @@
-import ProjectItem from './ProjectItem';
+import ProjectItem from "@sections/project/ProjectItem";
 
 export default () => {
     return (
