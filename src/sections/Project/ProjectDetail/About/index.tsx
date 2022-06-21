@@ -46,10 +46,16 @@ export default ({ projectId }: { projectId: string }) => {
     return (
         <AboutContainer>
             <AboutVisual onClick={handlePageNumButton}>
-                {projectId === 'K21' && projects.K21(curPageNum).Visual}
+                {projectId === 'K21' && projects(curPageNum).K21.Visual}
+                {projectId === 'Suspension' && projects(curPageNum).Suspension.Visual}
+                {projectId === 'Crane' && projects(curPageNum).Crane.Visual}
+                {projectId === 'Governor' && projects(curPageNum).Governor.Visual}
             </AboutVisual>
             <AboutDescription>
-                <span>{projectId === 'K21' && projects.K21(curPageNum).description}</span>
+                <span>{projectId === 'K21' && projects(curPageNum).K21.description}</span>
+                <span>{projectId === 'Suspension' && projects(curPageNum).Suspension.description}</span>
+                <span>{projectId === 'Crane' && projects(curPageNum).Crane.description}</span>
+                <span>{projectId === 'Governor' && projects(curPageNum).Governor.description}</span>
             </AboutDescription>
         </AboutContainer>
     )

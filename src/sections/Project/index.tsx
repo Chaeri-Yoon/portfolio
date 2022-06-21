@@ -33,6 +33,7 @@ export default () => {
     const handleCategoryChange = (value: ProjectCategory) => setCategory(value);
     const handleProjectClick = (event: React.MouseEvent<HTMLElement>) => {
         const { id } = event.target as HTMLElement;
+        if (!id) return;
         setProjectId(id);
         setIsModalOpen(true);
     }

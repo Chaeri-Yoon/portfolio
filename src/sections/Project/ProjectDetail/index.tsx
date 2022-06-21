@@ -54,7 +54,7 @@ export default ({ projectId }: { projectId: string }) => {
             </TabArea>
             <Content>
                 {tab === 'VIDEO' && (
-                    <VideoContainer controls>
+                    <VideoContainer controls autoPlay>
                         <VideoSource src={`/videos/projects/${projectId}.mp4`} />
                     </VideoContainer>
                 )}
