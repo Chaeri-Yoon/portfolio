@@ -5,6 +5,7 @@ import ModeButtons, { ModeButton } from "@components/ModeButtons";
 import ProjectDetail from "@sections/project/ProjectDetail";
 import Web from "@sections/project/Web";
 import XR from "@sections/project/XR";
+import { ProjectIDType } from "@data";
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -28,13 +29,13 @@ const ProjectList = styled.ul`
 type ProjectCategory = 'XR' | 'WEB';
 export default () => {
     const [category, setCategory] = useState<ProjectCategory>('XR');
-    const [projectId, setProjectId] = useState('');
+    const [projectID, setProjectID] = useState<ProjectIDType>('K21');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const handleCategoryChange = (value: ProjectCategory) => setCategory(value);
     const handleProjectClick = (event: React.MouseEvent<HTMLElement>) => {
         const { id } = event.target as HTMLElement;
         if (!id) return;
-        setProjectId(id);
+        setProjectID(id as ProjectIDType);
         setIsModalOpen(true);
     }
     const handleProjectModalClose = () => setIsModalOpen(false);
@@ -49,7 +50,7 @@ export default () => {
             </ProjectList>
             {isModalOpen && (
                 <Modal handleClose={handleProjectModalClose}>
-                    <ProjectDetail projectId={projectId} />
+                    <ProjectDetail projectID={projectID} />
                 </Modal>
             )}
         </Container>

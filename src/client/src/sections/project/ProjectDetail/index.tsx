@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components"
 import { ModeButton } from "@components/ModeButtons";
-import About from "@sections/project/ProjectDetail/About";
 import ProjectSkills from "@sections/project/ProjectDetail/ProjectSkills";
+import ProjectDetailItem from "./ProjectDetailItem";
+import { ProjectIDType } from "@data";
 
 const Container = styled.div`
     width: 100%;
@@ -31,38 +32,26 @@ const Content = styled.div`
     justify-content: center;
     align-items: flex-start;
 `;
-const VideoContainer = styled.video`
-    margin: 7% 0;
-    width: 70%;
-    aspect-ratio: 4 / 3;
-    background-color: black;
-`;
-const VideoSource = styled.source`
-    width: 100%;
-    height: 100%;
-`;
-type TabType = 'VIDEO' | 'ABOUT' | 'SKILLS';
-export default ({ projectId }: { projectId: string }) => {
-    const [tab, setTab] = useState<TabType>('VIDEO');
+export type TabType = 'INTRO' | 'ABOUT' | 'SKILLS';
+export default ({ projectID }: { projectID: ProjectIDType }) => {
+    const [tab, setTab] = useState<TabType>('INTRO');
     const handleTabClick = (value: TabType) => setTab(value);
     return (
         <Container>
             <TabArea>
-                <ModeButton isactive={`${tab === 'VIDEO'}`} text='VIDEO' kind='ProjectDetail' handleModeClick={() => handleTabClick('VIDEO')} />
+                <ModeButton isactive={`${tab === 'INTRO'}`} text='INTRO' kind='ProjectDetail' handleModeClick={() => handleTabClick('INTRO')} />
                 <ModeButton isactive={`${tab === 'ABOUT'}`} text='ABOUT' kind='ProjectDetail' handleModeClick={() => handleTabClick('ABOUT')} />
                 <ModeButton isactive={`${tab === 'SKILLS'}`} text='SKILLS' kind='ProjectDetail' handleModeClick={() => handleTabClick('SKILLS')} />
             </TabArea>
             <Content>
-                {tab === 'VIDEO' && (
-                    <VideoContainer controls autoPlay>
-                        <VideoSource src={`/videos/projects/${projectId}.mp4`} />
-                    </VideoContainer>
+                {tab === 'INTRO' && (
+                    <ProjectDetailItem mode="INTRO" projectID={projectID} />
                 )}
                 {tab === 'ABOUT' && (
-                    <About projectId={projectId} />
+                    <ProjectDetailItem mode="ABOUT" projectID={projectID} />
                 )}
                 {tab === 'SKILLS' && (
-                    <ProjectSkills projectId={projectId} />
+                    <ProjectSkills projectID={projectID} />
                 )}
             </Content>
         </Container>

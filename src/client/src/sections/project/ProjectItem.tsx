@@ -3,9 +3,9 @@ import styled from "styled-components";
 const Item = styled.li<{ thumbnail: string }>`
     width: 100%;
     aspect-ratio: 1 / 1;
-    // The url will be replaced with the one containing the path of a thumbNail corresponding to each project
+    background-color: black;
     background-image: url(/images${({ thumbnail }) => thumbnail || null});
-    background-position: 0 0;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 `;

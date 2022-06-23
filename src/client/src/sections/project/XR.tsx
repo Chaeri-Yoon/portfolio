@@ -3,10 +3,10 @@ import ProjectItem from "@sections/project/ProjectItem";
 export default () => {
     return (
         <>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='K21'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='Suspension'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='Crane'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='Governor'></ProjectItem>
+            <ProjectItem thumbnail='/projects/k21.png' projectName='K21'></ProjectItem>
+            <ProjectItem thumbnail='/projects/suspension.png' projectName='Suspension'></ProjectItem>
+            <ProjectItem thumbnail='/projects/crane.png' projectName='Crane'></ProjectItem>
+            <ProjectItem thumbnail='/projects/governor.png' projectName='Governor'></ProjectItem>
         </>
     )
 }
