@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ItemsList, Skill } from "@components/SkillsList";
-import { ProjectIDType, projects } from "@data";
+import { ProjectIDType, projectsDetail } from "@data";
 import '@styles/variables.css'
 
 const Container = styled.div`
@@ -14,7 +14,7 @@ export default ({ projectID }: { projectID: ProjectIDType }) => {
     return (
         <Container>
             <SkillsContainer>
-                {projects()[projectID].skills.map((skill, i) => (
+                {projectsDetail()[projectID].skills.map((skill, i) => (
                     <Skill key={i} skillname={skill} />
                 ))}
             </SkillsContainer>

@@ -1,14 +1,15 @@
+import { projects } from "@data";
 import ProjectItem from "@sections/project/ProjectItem";
 
 export default () => {
     return (
         <>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='web/1'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='web/2'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='web/3'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='web/4'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='web/5'></ProjectItem>
-            <ProjectItem thumbnail='/skills/nodejs.png' projectName='web/6'></ProjectItem>
+            <ProjectItem thumbnail={`/projects/Web/${projects.PINKITALK2021}.png`} projectName={projects.PINKITALK2021}></ProjectItem>
+            <ProjectItem thumbnail='' projectName={''}></ProjectItem>
+            <ProjectItem thumbnail='' projectName={''}></ProjectItem>
+            <ProjectItem thumbnail='' projectName={''}></ProjectItem>
+            <ProjectItem thumbnail='' projectName={''}></ProjectItem>
+            <ProjectItem thumbnail='' projectName={''}></ProjectItem>
         </>
     )
 }

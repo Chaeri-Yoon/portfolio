@@ -1,17 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { ProjectIDType, projects } from "@data";
+import { ProjectIDType, projectsDetail } from "@data";
 import { TabType } from ".";
+import { ProjectCategory } from "@sections/project";
+import PageButtons from "./About/PageButtons";
 
 const Container = styled.div`
-    width: 70%;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
-const VideoContainer = styled.div`
+const VisualContainer = styled.div`
     margin-bottom: 1em;
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -25,10 +27,22 @@ const VideoContainer = styled.div`
         background-color: black;
     }
 `;
+const Image = styled.div<{ page: number, projectID: ProjectIDType }>`
+    width: 100%;
+    height: 100%;
+    background-image: url(${({ page, projectID }) => `/images/projects/Web/${projectID}/${projectID}_${page + 1}.jpg`});
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+`;
 const DescriptionContainer = styled.div`
     width: 100%;
     aspect-ratio: 4 / 1;
     border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -38,7 +52,14 @@ const DescriptionContainer = styled.div`
         display: none;
     }
 `;
-export default ({ mode, projectID }: { mode: TabType, projectID: ProjectIDType }) => {
+const DemoURL = styled.span`
+    font-size: 0.75em;
+    color: blue;
+    & > a{
+        font-weight: 600;
+    }
+`;
+export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, projectCategory?: ProjectCategory, projectID: ProjectIDType }) => {
     // For 'About' Tab
     const [curPageNum, setCurPageNum] = useState(0);
     const handlePageNumButton = (event: React.MouseEvent<HTMLElement>) => {
@@ -49,13 +70,27 @@ export default ({ mode, projectID }: { mode: TabType, projectID: ProjectIDType }
     //
     return (
         <Container>
-            <VideoContainer onClick={handlePageNumButton}>
+            <VisualContainer onClick={handlePageNumButton}>
                 {mode === 'INTRO' && <video controls autoPlay src={`/videos/projects/${projectID}.mp4`} />}
-                {mode === 'ABOUT' && projects(curPageNum)[projectID].Video}
-            </VideoContainer>
+                {mode === 'ABOUT' && projectCategory === 'XR' && projectsDetail(curPageNum)[projectID].Video}
+                {mode === 'ABOUT' && projectCategory === 'WEB' && (
+                    <>
+                        <Image page={curPageNum} projectID={projectID} />
+                        <PageButtons pageNums={projectsDetail(curPageNum)[projectID].pageNums} curPageNum={curPageNum} />
+                    </>
+                )}
+            </VisualContainer>
             <DescriptionContainer>
-                {mode === 'INTRO' && projects()[projectID].introduction}
-                {mode === 'ABOUT' && projects(curPageNum)[projectID].description}
+                <p>
+                    {mode === 'INTRO' && projectsDetail()[projectID].introduction}
+                    {mode === 'ABOUT' && projectsDetail(curPageNum)[projectID].description}
+                </p>
+                {mode === 'ABOUT' && projectCategory === 'WEB' && curPageNum === 0 && (
+                    <DemoURL>
+                        <br />
+                        &gt; Check out <a href="https://chaeri-yoon.github.io/pinki-talk-2021/">https://chaeri-yoon.github.io/pinki-talk-2021/</a>
+                    </DemoURL>
+                )}
             </DescriptionContainer>
         </Container>
     )

@@ -18,10 +18,10 @@ const Button = styled.button<{ isactive: boolean }>`
         margin-right: 5px;
     }
 `;
-export default ({ numOfPages, curPageNum }: { numOfPages: number, curPageNum: number }) => {
+export default ({ pageNums, curPageNum }: { pageNums: number, curPageNum: number }) => {
     return (
         <Container>
-            {Array.from({ length: numOfPages }).fill(1).map((_, i) => <Button key={i} id={`page${i}`} isactive={curPageNum === i} />)}
+            {Array.from({ length: pageNums }).fill(1).map((_, i) => <Button key={i} id={`page${i}`} isactive={curPageNum === i} />)}
         </Container>
     )
 };

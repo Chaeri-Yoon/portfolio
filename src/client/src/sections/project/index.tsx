@@ -26,7 +26,7 @@ const ProjectList = styled.ul`
     column-gap: 1em;
     row-gap: 1em;
 `;
-type ProjectCategory = 'XR' | 'WEB';
+export type ProjectCategory = 'XR' | 'WEB';
 export default () => {
     const [category, setCategory] = useState<ProjectCategory>('XR');
     const [projectID, setProjectID] = useState<ProjectIDType>('K21');
@@ -50,7 +50,7 @@ export default () => {
             </ProjectList>
             {isModalOpen && (
                 <Modal handleClose={handleProjectModalClose}>
-                    <ProjectDetail projectID={projectID} />
+                    <ProjectDetail projectCategory={category} projectID={projectID} />
                 </Modal>
             )}
         </Container>

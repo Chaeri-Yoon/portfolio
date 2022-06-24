@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components"
 import { ModeButton } from "@components/ModeButtons";
 import ProjectSkills from "@sections/project/ProjectDetail/ProjectSkills";
 import ProjectDetailItem from "./ProjectDetailItem";
 import { ProjectIDType } from "@data";
+import { ProjectCategory } from "@sections/project";
 
 const Container = styled.div`
     width: 100%;
@@ -33,13 +34,14 @@ const Content = styled.div`
     align-items: flex-start;
 `;
 export type TabType = 'INTRO' | 'ABOUT' | 'SKILLS';
-export default ({ projectID }: { projectID: ProjectIDType }) => {
+export default ({ projectCategory, projectID }: { projectCategory: ProjectCategory, projectID: ProjectIDType }) => {
     const [tab, setTab] = useState<TabType>('INTRO');
     const handleTabClick = (value: TabType) => setTab(value);
+    useEffect(() => setTab(projectCategory === 'XR' ? 'INTRO' : 'ABOUT'), [projectCategory])
     return (
         <Container>
             <TabArea>
-                <ModeButton isactive={`${tab === 'INTRO'}`} text='INTRO' kind='ProjectDetail' handleModeClick={() => handleTabClick('INTRO')} />
+                {projectCategory === 'XR' && <ModeButton isactive={`${tab === 'INTRO'}`} text='INTRO' kind='ProjectDetail' handleModeClick={() => handleTabClick('INTRO')} />}
                 <ModeButton isactive={`${tab === 'ABOUT'}`} text='ABOUT' kind='ProjectDetail' handleModeClick={() => handleTabClick('ABOUT')} />
                 <ModeButton isactive={`${tab === 'SKILLS'}`} text='SKILLS' kind='ProjectDetail' handleModeClick={() => handleTabClick('SKILLS')} />
             </TabArea>
@@ -48,7 +50,7 @@ export default ({ projectID }: { projectID: ProjectIDType }) => {
                     <ProjectDetailItem mode="INTRO" projectID={projectID} />
                 )}
                 {tab === 'ABOUT' && (
-                    <ProjectDetailItem mode="ABOUT" projectID={projectID} />
+                    <ProjectDetailItem mode="ABOUT" projectCategory={projectCategory} projectID={projectID} />
                 )}
                 {tab === 'SKILLS' && (
                     <ProjectSkills projectID={projectID} />
