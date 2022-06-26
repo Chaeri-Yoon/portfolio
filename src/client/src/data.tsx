@@ -1,6 +1,3 @@
-import { ReactElement, useEffect, useRef } from "react";
-import PageButtons from "@sections/project/ProjectDetail/About/PageButtons";
-
 export const skills = {
     HTML: "html",
     CSS: "css",
@@ -27,45 +24,25 @@ export const skills = {
 interface IDataReturn {
     pageNums: number;
     introduction?: string;
-    Video?: ReactElement;
     description: string;
     skills: string[];
 }
-interface IVideo {
-    pageNums: number;
-    curPageNum: number;
-    videoSources: JSX.Element[];
-}
-const Video = ({ pageNums, curPageNum, videoSources }: IVideo) => {
-    const videoRef = useRef<HTMLVideoElement>(null);
-    useEffect(() => videoRef?.current?.load(), [curPageNum]);
-    return (
-        <>
-            <video autoPlay loop ref={videoRef}>
-                {videoSources[curPageNum]}
-            </video>
-            <PageButtons pageNums={pageNums} curPageNum={curPageNum} />
-        </>
-    )
-}
+
 interface IDataInput {
     introduction?: string,
     pageNums?: number,
-    videoSources?: JSX.Element[],
     descriptions?: string[]
     skills: string[]
 }
 class Data {
     introduction?: string;
     pageNums: number;
-    videoSources?: JSX.Element[];
     descriptions: string[];
     skills: string[];
 
-    constructor({ introduction = '', pageNums = 1, videoSources = [], descriptions = [], skills = [] }: IDataInput) {
+    constructor({ introduction = '', pageNums = 1, descriptions = [], skills = [] }: IDataInput) {
         this.introduction = introduction;
         this.pageNums = pageNums;
-        this.videoSources = [...videoSources];
         this.descriptions = [...descriptions];
         this.skills = [...skills];
     }
@@ -73,7 +50,6 @@ class Data {
         return {
             pageNums: this.pageNums,
             introduction: this.introduction,
-            Video: <Video pageNums={this.pageNums} curPageNum={curPageNum} videoSources={this.videoSources || []} />,
             description: this.descriptions[curPageNum],
             skills: this.skills
         }
@@ -82,12 +58,7 @@ class Data {
 const K21 = new Data({
     introduction: 'This app is to provide army mechanics with training on how to fix and maintain K21, a South Korean infantry fighting vehicle.',
     pageNums: 4,
-    videoSources: [
-        <source src='/videos/projects/about/K21/K21_1.mp4' />,
-        <source src='/videos/projects/about/K21/K21_2.mp4' />,
-        <source src='/videos/projects/about/K21/K21_3.mp4' />,
-        <source src='/videos/projects/about/K21/K21_4.mp4' />
-    ], descriptions: [
+    descriptions: [
         `The app recognizes the K21 product with Vuforia and renders its 3D virtual model in a way that makes it layered onto the actual model on camera.
         Users can decide whether to turn off showing this virtual model, except for the components related to the step going on, in the case that this virtual object blocks users' sight.`,
         `The app projects information on how to complete the current procedure, such as plans and instruction manuals, around the position where the virtual model is created.
@@ -100,12 +71,7 @@ const K21 = new Data({
 const Suspension = new Data({
     introduction: 'This app is to provide army mechanics with training on how to fix and maintain suspension units assembled on K21, a South Korean infantry fighting vehicle.',
     pageNums: 4,
-    videoSources: [
-        <source src='/videos/projects/about/Suspension/Suspension_1.mp4' />,
-        <source src='/videos/projects/about/Suspension/Suspension_2.mp4' />,
-        <source src='/videos/projects/about/Suspension/Suspension_3.mp4' />,
-        <source src='/videos/projects/about/Suspension/Suspension_4.mp4' />,
-    ], descriptions: [
+    descriptions: [
         `The app recognizes the suspension assembled on K21 with Vuforia and renders its 3D virtual model in a way that makes it layered onto the actual model on camera.
         Users can decide whether to turn off showing this virtual model, except for the components related to the step going on, in the case that this virtual object blocks users' sight.`,
         `The app projects information on how to complete the current procedure, such as plans and instruction manuals, around the position where the virtual model is created.
@@ -118,11 +84,7 @@ const Suspension = new Data({
 const Crane = new Data({
     introduction: 'This app is to provide construction workers with safety training on working with cranes.',
     pageNums: 3,
-    videoSources: [
-        <source src='/videos/projects/about/Crane/Crane_1.mp4' />,
-        <source src='/videos/projects/about/Crane/Crane_2.mp4' />,
-        <source src='/videos/projects/about/Crane/Crane_3.mp4' />
-    ], descriptions: [
+    descriptions: [
         `The app projects information onto the real world as virtual objects.`,
         `Users can decide whether to turn off showing the information panel in the case that they feel the need to keep it invisible for a moment.`,
         `Users can set the default language between Korean and Chinese, and the information will be provided with the language chosen.`
@@ -131,11 +93,7 @@ const Crane = new Data({
 const Governor = new Data({
     introduction: 'This app is to provide mechanics responsible for maintaining gas governors with maintenance training.',
     pageNums: 3,
-    videoSources: [
-        <source src='/videos/projects/about/Governor/Governor_1.mp4' />,
-        <source src='/videos/projects/about/Governor/Governor_2.mp4' />,
-        <source src='/videos/projects/about/Governor/Governor_3.mp4' />
-    ], descriptions: [
+    descriptions: [
         `The app recognizes the gas governor with Vuforia and renders its 3D virtual model in a way that makes it layered onto the actual model on camera.
         Users can decide whether to turn off showing this virtual model, except for the components related to the step going on, in the case that this virtual object blocks users' sight.`,
         `The app projects information on how to complete the current procedure around the position where the virtual model is created. It also shows users the animation that shows how the procedure should be done. 
@@ -156,6 +114,7 @@ const PinkiTalk2021 = new Data({
     ], skills: [skills.HTML, skills.CSS]
 })
 // Return data
+export type ProjectCategory = 'XR' | 'WEB';
 export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021';
 export const projects = {
     K21: 'K21',

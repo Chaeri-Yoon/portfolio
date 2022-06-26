@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components"
 import { ModeButton } from "@components/ModeButtons";
 import ProjectSkills from "@sections/project/ProjectDetail/ProjectSkills";
 import ProjectDetailItem from "./ProjectDetailItem";
 import { ProjectIDType } from "@data";
-import { ProjectCategory } from "@sections/project";
+import { ProjectCategory } from "@data";
 
 const Container = styled.div`
     width: 100%;
@@ -35,9 +35,8 @@ const Content = styled.div`
 `;
 export type TabType = 'INTRO' | 'ABOUT' | 'SKILLS';
 export default ({ projectCategory, projectID }: { projectCategory: ProjectCategory, projectID: ProjectIDType }) => {
-    const [tab, setTab] = useState<TabType>('INTRO');
+    const [tab, setTab] = useState<TabType>(projectCategory === 'XR' ? 'INTRO' : 'ABOUT');
     const handleTabClick = (value: TabType) => setTab(value);
-    useEffect(() => setTab(projectCategory === 'XR' ? 'INTRO' : 'ABOUT'), [projectCategory])
     return (
         <Container>
             <TabArea>

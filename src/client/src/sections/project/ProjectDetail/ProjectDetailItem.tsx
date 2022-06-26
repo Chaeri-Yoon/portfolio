@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { ProjectIDType, projectsDetail } from "@data";
+import { ProjectIDType, ProjectCategory, projectsDetail } from "@data";
 import { TabType } from ".";
-import { ProjectCategory } from "@sections/project";
 import PageButtons from "./About/PageButtons";
 
 const Container = styled.div`
@@ -72,7 +71,7 @@ export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, pr
         <Container>
             <VisualContainer onClick={handlePageNumButton}>
                 {mode === 'INTRO' && <video controls autoPlay src={`/videos/projects/${projectID}.mp4`} />}
-                {mode === 'ABOUT' && projectCategory === 'XR' && projectsDetail(curPageNum)[projectID].Video}
+                {mode === 'ABOUT' && projectCategory === 'XR' && <Video pageNums={projectsDetail(curPageNum)[projectID].pageNums} curPageNum={curPageNum} projectID={projectID} />}
                 {mode === 'ABOUT' && projectCategory === 'WEB' && (
                     <>
                         <Image page={curPageNum} projectID={projectID} />
@@ -93,5 +92,22 @@ export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, pr
                 )}
             </DescriptionContainer>
         </Container>
+    )
+}
+interface IVideo {
+    pageNums: number;
+    curPageNum: number;
+    projectID: ProjectIDType;
+}
+const Video = ({ pageNums, curPageNum, projectID }: IVideo) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    useEffect(() => videoRef?.current?.load(), [curPageNum]);
+    return (
+        <>
+            <video autoPlay loop ref={videoRef}>
+                <source src={`/videos/projects/about/${projectID}/${projectID}_${curPageNum + 1}.mp4`} />,
+            </video>
+            <PageButtons pageNums={pageNums} curPageNum={curPageNum} />
+        </>
     )
 }

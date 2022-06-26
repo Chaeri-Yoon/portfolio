@@ -5,7 +5,7 @@ import ModeButtons, { ModeButton } from "@components/ModeButtons";
 import ProjectDetail from "@sections/project/ProjectDetail";
 import Web from "@sections/project/Web";
 import XR from "@sections/project/XR";
-import { ProjectIDType } from "@data";
+import { ProjectCategory, ProjectIDType } from "@data";
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -26,7 +26,7 @@ const ProjectList = styled.ul`
     column-gap: 1em;
     row-gap: 1em;
 `;
-export type ProjectCategory = 'XR' | 'WEB';
+
 export default () => {
     const [category, setCategory] = useState<ProjectCategory>('XR');
     const [projectID, setProjectID] = useState<ProjectIDType>('K21');
