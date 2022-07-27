@@ -5,7 +5,7 @@ import { TabType } from ".";
 import PageButtons from "./About/PageButtons";
 
 const Container = styled.div`
-    width: 80%;
+    width: 95%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@ const Container = styled.div`
     align-items: center;
 `;
 const VisualContainer = styled.div`
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     width: 100%;
     aspect-ratio: 4 / 3;
     display: flex;
@@ -71,23 +71,23 @@ export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, pr
         <Container>
             <VisualContainer onClick={handlePageNumButton}>
                 {mode === 'INTRO' && <video controls autoPlay src={`/videos/projects/${projectID}.mp4`} />}
-                {mode === 'ABOUT' && projectCategory === 'XR' && <Video pageNums={projectsDetail(curPageNum)[projectID].pageNums} curPageNum={curPageNum} projectID={projectID} />}
+                {mode === 'ABOUT' && projectCategory === 'XR' && <Video pageNums={projectsDetail[projectID].pageNums} curPageNum={curPageNum} projectID={projectID} />}
                 {mode === 'ABOUT' && projectCategory === 'WEB' && (
                     <>
                         <Image page={curPageNum} projectID={projectID} />
-                        <PageButtons pageNums={projectsDetail(curPageNum)[projectID].pageNums} curPageNum={curPageNum} />
+                        <PageButtons pageNums={projectsDetail[projectID].pageNums} curPageNum={curPageNum} />
                     </>
                 )}
             </VisualContainer>
             <DescriptionContainer>
                 <p>
-                    {mode === 'INTRO' && projectsDetail()[projectID].introduction}
-                    {mode === 'ABOUT' && projectsDetail(curPageNum)[projectID].description}
+                    {mode === 'INTRO' && projectsDetail[projectID].introduction}
+                    {mode === 'ABOUT' && projectsDetail[projectID].descriptions[curPageNum]}
                 </p>
                 {mode === 'ABOUT' && projectCategory === 'WEB' && curPageNum === 0 && (
                     <DemoURL>
                         <br />
-                        &gt; Check out <a href="https://chaeri-yoon.github.io/pinki-talk-2021/">https://chaeri-yoon.github.io/pinki-talk-2021/</a>
+                        &gt; Check out <a href={projectsDetail[projectID]?.link} target="_blank">{projectsDetail[projectID]?.link}</a>
                     </DemoURL>
                 )}
             </DescriptionContainer>

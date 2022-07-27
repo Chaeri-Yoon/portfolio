@@ -8,13 +8,13 @@ const Container = styled.div`
     padding: calc(var(--body-padding) / 2);
 `;
 const SkillsContainer = styled(ItemsList)`
-    grid-template-columns: repeat(auto-fill, 20%);
+    grid-template-columns: repeat(auto-fill, 15%);
 `;
 export default ({ projectID }: { projectID: ProjectIDType }) => {
     return (
         <Container>
             <SkillsContainer>
-                {projectsDetail()[projectID].skills.map((skill, i) => (
+                {projectsDetail[projectID].skills.map((skill, i) => (
                     <Skill key={i} skillname={skill} />
                 ))}
             </SkillsContainer>

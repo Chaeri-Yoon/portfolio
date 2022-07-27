@@ -15,7 +15,7 @@ const Background = styled.div`
     z-index: 100;
 `;
 const Container = styled.div`
-    width: 45%;
+    width: 50%;
     aspect-ratio: 4 / 3;
     background-color: white;
     border: 0.5px solid rgba(0, 0, 0, .2);

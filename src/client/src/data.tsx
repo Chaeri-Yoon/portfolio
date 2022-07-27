@@ -3,7 +3,13 @@ export const skills = {
     CSS: "css",
     JS: "js",
     HTMLCSSJS: "htmlcssjs",
+    PUG: "pug",
+    SCSS: "scss",
+    MONGODB: "mongodb",
     NODEJS: "nodejs",
+    EXPRESS: "express",
+    PASSPORT: "passport",
+    WEBPACK: "webpack",
     UNITY: "unity",
     VUFORIA: "vuforia",
     get topList() {
@@ -20,42 +26,16 @@ export const skills = {
         ]
     }
 }
-// Project Data
-interface IDataReturn {
-    pageNums: number;
-    introduction?: string;
-    description: string;
-    skills: string[];
-}
 
-interface IDataInput {
+interface IProjectData {
     introduction?: string,
-    pageNums?: number,
-    descriptions?: string[]
-    skills: string[]
+    pageNums: number,
+    descriptions: string[],
+    skills: string[],
+    link?: string
 }
-class Data {
-    introduction?: string;
-    pageNums: number;
-    descriptions: string[];
-    skills: string[];
 
-    constructor({ introduction = '', pageNums = 1, descriptions = [], skills = [] }: IDataInput) {
-        this.introduction = introduction;
-        this.pageNums = pageNums;
-        this.descriptions = [...descriptions];
-        this.skills = [...skills];
-    }
-    return(curPageNum: number): IDataReturn {
-        return {
-            pageNums: this.pageNums,
-            introduction: this.introduction,
-            description: this.descriptions[curPageNum],
-            skills: this.skills
-        }
-    }
-};
-const K21 = new Data({
+const K21: IProjectData = {
     introduction: 'This app is to provide army mechanics with training on how to fix and maintain K21, a South Korean infantry fighting vehicle.',
     pageNums: 4,
     descriptions: [
@@ -67,8 +47,8 @@ const K21 = new Data({
         `The design plan allows users to adjust the focus on the specific part of it that they want to see through a drag gesture.`,
         `The information objects will tilt themselves in real-time so that they can face users.`
     ], skills: [skills.UNITY, skills.VUFORIA]
-});
-const Suspension = new Data({
+};
+const Suspension: IProjectData = {
     introduction: 'This app is to provide army mechanics with training on how to fix and maintain suspension units assembled on K21, a South Korean infantry fighting vehicle.',
     pageNums: 4,
     descriptions: [
@@ -80,8 +60,8 @@ const Suspension = new Data({
         `The app offers the 3D design plan, which allows users to see either an assembled or disassembled model and provides the function to show the information on each component upon clicked.`,
         `The information objects will tilt themselves in real-time so that they can face users.`
     ], skills: [skills.UNITY, skills.VUFORIA]
-});
-const Crane = new Data({
+};
+const Crane: IProjectData = {
     introduction: 'This app is to provide construction workers with safety training on working with cranes.',
     pageNums: 3,
     descriptions: [
@@ -89,8 +69,8 @@ const Crane = new Data({
         `Users can decide whether to turn off showing the information panel in the case that they feel the need to keep it invisible for a moment.`,
         `Users can set the default language between Korean and Chinese, and the information will be provided with the language chosen.`
     ], skills: [skills.UNITY, skills.VUFORIA]
-});
-const Governor = new Data({
+};
+const Governor: IProjectData = {
     introduction: 'This app is to provide mechanics responsible for maintaining gas governors with maintenance training.',
     pageNums: 3,
     descriptions: [
@@ -101,8 +81,8 @@ const Governor = new Data({
         `The app provides information on each assembly unit that composes the gas governor. This information includes the data on each component put together in the assembly unit and the animation of the whole step on how to assemble or disassemble the unit.
         Users can also adjust the size of each unit, make it either bigger or smaller, and rotate it by means of a remote controller.`
     ], skills: [skills.UNITY, skills.VUFORIA]
-});
-const PinkiTalk2021 = new Data({
+};
+const PinkiTalk2021: IProjectData = {
     pageNums: 5,
     descriptions: [
         `This is a Kakao-talk clone coding project, which is one of the dominating Korean messenger applications.
@@ -111,24 +91,31 @@ const PinkiTalk2021 = new Data({
         `Login with Email or phone number and password that meet some validation rules. When you click login button, it will direct you to the main page of the application.`,
         `Main page`,
         `Chats & Chatroom`
-    ], skills: [skills.HTML, skills.CSS]
-})
+    ], skills: [skills.HTML, skills.CSS],
+    link: "https://chaeri-yoon.github.io/pinki-talk-2021"
+};
+const ToDoList: IProjectData = {
+    pageNums: 7,
+    descriptions: [
+        `This is a To Do List application, which you can add your daily tasks for a specific date on.`,
+        `This application offers login function. Before using this application, you might want to create your own account.`,
+        `When you are successfully logged in, you will be directed to homepage and your login status will be remembered by means of session.`,
+        `After clicking a specific date when you want to add your task, write down your task and then push the enter button on your keyboard.`,
+        `When your mouse is hovering on the task, buttons for editing and deleting will appear.`,
+        `When you complete your task, you can tick a checkbox and then it will be automatically moved to the bottom. You can also uncheck a done task.`,
+        `On My account tab, you can change your personal information. When you click change password button, the panel for changing password will appear.`
+    ], skills: [skills.PUG, skills.SCSS, skills.JS, skills.NODEJS, skills.EXPRESS, skills.PASSPORT, skills.MONGODB, skills.WEBPACK],
+    link: "https://chaeri-yoon-todolist.herokuapp.com"
+};
 // Return data
 export type ProjectCategory = 'XR' | 'WEB';
-export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021';
+export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList';
 export const projects = {
     K21: 'K21',
     SUSPENSION: 'Suspension',
     CRANE: 'Crane',
     GOVERNOR: 'Governor',
-    PINKITALK2021: 'PinkiTalk2021'
+    PINKITALK2021: 'PinkiTalk2021',
+    ToDoList: 'ToDoList'
 }
-export const projectsDetail = (curPageNum = 0) => {
-    return {
-        K21: K21.return(curPageNum),
-        Suspension: Suspension.return(curPageNum),
-        Crane: Crane.return(curPageNum),
-        Governor: Governor.return(curPageNum),
-        PinkiTalk2021: PinkiTalk2021.return(curPageNum)
-    }
-}
+export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList };

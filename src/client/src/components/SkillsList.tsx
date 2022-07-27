@@ -4,7 +4,7 @@ export const ItemsList = styled.ul`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, 10%);
-    column-gap: 1em;
+    gap: 1em;
     list-style-type: none;
 `;
 const Item = styled.li`
@@ -19,9 +19,10 @@ const Image = styled.div<{ skillname: string }>`
     border-radius: 50%;
     
     background-image: url(${({ skillname }) => `/images/skills/${skillname}.png`});
-    background-size: ${({ skillname }) => skillname === 'vuforia' ? '90%' : 'contain'};
+    background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: white;
 `;
 export default ({ children }: any) => {
     return (

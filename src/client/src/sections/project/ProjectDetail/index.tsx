@@ -28,6 +28,7 @@ const TabArea = styled.div`
 `;
 const Content = styled.div`
     flex: 1;
+    padding: 0.5em 0;
     height: 100%;
     display: flex;
     justify-content: center;
