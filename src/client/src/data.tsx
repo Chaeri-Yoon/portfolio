@@ -5,6 +5,8 @@ export const skills = {
     HTMLCSSJS: "htmlcssjs",
     PUG: "pug",
     SCSS: "scss",
+    REACT: "react",
+    REDUX: "redux",
     MONGODB: "mongodb",
     NODEJS: "nodejs",
     EXPRESS: "express",
@@ -107,15 +109,29 @@ const ToDoList: IProjectData = {
     ], skills: [skills.PUG, skills.SCSS, skills.JS, skills.NODEJS, skills.EXPRESS, skills.PASSPORT, skills.MONGODB, skills.WEBPACK],
     link: "https://chaeri-yoon-todolist.herokuapp.com"
 };
+const ToDoListReact: IProjectData = {
+    pageNums: 7,
+    descriptions: [
+        `This is a To Do List application, which you can add your daily tasks with category.`,
+        `This application offers login function. Before using this application, you might want to create your own account.`,
+        `Main page`,
+        `You can create your own task with the category. Choose one of the categories, which is Home, Work, School.`,
+        `It will display the list of your tasks. When you navigate to another category, it will show you the list of tasks only in the selected category.`,
+        `You can change the content and category of your tasks.`,
+        `When you complete your task, you can tick a checkbox and then it will be automatically moved to the bottom. You can also uncheck a done task.`,
+    ], skills: [skills.REACT, skills.REDUX, skills.JS, skills.NODEJS, skills.EXPRESS, skills.PASSPORT, skills.MONGODB],
+    link: "https://chaeri-yoon-todolist-react.herokuapp.com/"
+};
 // Return data
 export type ProjectCategory = 'XR' | 'WEB';
-export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList';
+export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact';
 export const projects = {
     K21: 'K21',
     SUSPENSION: 'Suspension',
     CRANE: 'Crane',
     GOVERNOR: 'Governor',
     PINKITALK2021: 'PinkiTalk2021',
-    ToDoList: 'ToDoList'
+    ToDoList: 'ToDoList',
+    ToDoListReact: 'ToDoListReact'
 }
-export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList };
+export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact };
