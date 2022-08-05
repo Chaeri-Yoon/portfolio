@@ -6,6 +6,7 @@ export const skills = {
     PUG: "pug",
     SCSS: "scss",
     REACT: "react",
+    TYPESCRIPT: "typescript",
     REDUX: "redux",
     MONGODB: "mongodb",
     NODEJS: "nodejs",
@@ -122,9 +123,22 @@ const ToDoListReact: IProjectData = {
     ], skills: [skills.REACT, skills.REDUX, skills.JS, skills.NODEJS, skills.EXPRESS, skills.PASSPORT, skills.MONGODB],
     link: "https://chaeri-yoon-todolist-react.herokuapp.com/"
 };
+const Nomflix: IProjectData = {
+    pageNums: 6,
+    descriptions: [
+        `This is an application showing the list of movies and tvs and detail of each entertaining content using themoviedb.org api`,
+        `This application shows the list of movies that are now being played or scheduled to release or popular.
+        If the 'TV' tab is clicked, it will show the list of tv shows that are top-rated or popular or due to be aired on that day.`,
+        `When you click any media content on the list of contents, the application will be directed to the link showing the information on that content.`,
+        `When 'Videos' tab is clicked, it will show you trailers for that content.`,
+        `When 'Proudction' tab is clicked, it will show you the list of companies which have devoted to the production of that content.`,
+        `On search tab, you can search contents by putting any keyword.`,
+    ], skills: [skills.REACT, skills.TYPESCRIPT],
+    link: "https://dazzling-swirles-d0e248.netlify.app/"
+};
 // Return data
 export type ProjectCategory = 'XR' | 'WEB';
-export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact';
+export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact' | 'Nomflix';
 export const projects = {
     K21: 'K21',
     SUSPENSION: 'Suspension',
@@ -132,6 +146,7 @@ export const projects = {
     GOVERNOR: 'Governor',
     PINKITALK2021: 'PinkiTalk2021',
     ToDoList: 'ToDoList',
-    ToDoListReact: 'ToDoListReact'
+    ToDoListReact: 'ToDoListReact',
+    Nomflix: 'Nomflix'
 }
-export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact };
+export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact, Nomflix };
