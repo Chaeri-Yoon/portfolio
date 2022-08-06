@@ -23,7 +23,7 @@ const Image = styled.div<{ skillname: string }>`
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: ${({ skillname }) => skillname === skills.TYPESCRIPT ? "#217BD4" : "white"};
+    background-color: ${({ skillname }) => skillname === skills.TYPESCRIPT ? "#217BD4" : (skillname === skills.BOOTSTRAP ? "#673AB7" : "white")};
 `;
 export default ({ children }: any) => {
     return (

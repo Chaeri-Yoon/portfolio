@@ -5,6 +5,7 @@ export const skills = {
     HTMLCSSJS: "htmlcssjs",
     PUG: "pug",
     SCSS: "scss",
+    BOOTSTRAP: "bootstrap",
     REACT: "react",
     TYPESCRIPT: "typescript",
     REDUX: "redux",
@@ -136,9 +137,19 @@ const Nomflix: IProjectData = {
     ], skills: [skills.REACT, skills.TYPESCRIPT],
     link: "https://dazzling-swirles-d0e248.netlify.app/"
 };
+const CovidTracker: IProjectData = {
+    pageNums: 3,
+    descriptions: [
+        `This is an application showing the number of cases of and deaths from COVID around the world and each country.`,
+        `This application shows the number of total and today cases of and deaths from COVID. Each number will be counted up from 0 to the number automatically once the application has got the api response.
+        The level of darkness is in proportion to the number of cases of each country.`,
+        `When the mouse is hovering on a country on the map, it will show the popup window with the brief information of the country and its recorded cases of COVID.`,
+    ], skills: [skills.REACT, skills.TYPESCRIPT, skills.BOOTSTRAP],
+    link: "https://dazzling-swirles-d0e248.netlify.app/"
+};
 // Return data
 export type ProjectCategory = 'XR' | 'WEB';
-export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact' | 'Nomflix';
+export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact' | 'Nomflix' | 'CovidTracker';
 export const projects = {
     K21: 'K21',
     SUSPENSION: 'Suspension',
@@ -147,6 +158,7 @@ export const projects = {
     PINKITALK2021: 'PinkiTalk2021',
     ToDoList: 'ToDoList',
     ToDoListReact: 'ToDoListReact',
-    Nomflix: 'Nomflix'
+    Nomflix: 'Nomflix',
+    CovidTracker: 'CovidTracker'
 }
-export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact, Nomflix };
+export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact, Nomflix, CovidTracker };
