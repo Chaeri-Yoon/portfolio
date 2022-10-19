@@ -16,6 +16,7 @@ export const skills = {
     WEBPACK: "webpack",
     UNITY: "unity",
     VUFORIA: "vuforia",
+    SOCKETIO: "socketio",
     get topList() {
         return [
             this.UNITY,
@@ -147,9 +148,33 @@ const CovidTracker: IProjectData = {
     ], skills: [skills.REACT, skills.TYPESCRIPT, skills.BOOTSTRAP],
     link: "https://dazzling-swirles-d0e248.netlify.app/"
 };
+const YoutubeClone: IProjectData = {
+    pageNums: 3,
+    descriptions: [
+        `This is an application showing the number of cases of and deaths from COVID around the world and each country.`,
+        `This application shows the number of total and today cases of and deaths from COVID. Each number will be counted up from 0 to the number automatically once the application has got the api response.
+        The level of darkness is in proportion to the number of cases of each country.`,
+        `When the mouse is hovering on a country on the map, it will show the popup window with the brief information of the country and its recorded cases of COVID.`,
+    ], skills: [skills.REACT, skills.TYPESCRIPT, skills.BOOTSTRAP],
+    link: "https://chaeri-yoon-youtube-clone.herokuapp.com/"
+};
+const ChatApp: IProjectData = {
+    pageNums: 8,
+    descriptions: [
+        'This is a real-time chat application which provides online communication through not only exchanging messages but also video call between two users.',
+        'Join a chat room with your own username and your selection of avatar icon.',
+        'You can join a chatroom by either selecting from the list of existing chat rooms or creating your own. Once you have had an username and a chatroom to join, the joining button will be activated.',
+        'If there is two users in a certain chat room, it means the room is full of capacity and so no more user is allowed to enter until there becomes any seat available.',
+        'Once you have accepted its access to your camera and mic, it will show your camera screen.',
+        'When there is another member in the same chat room and they have granted access to their media devices, you can communicate through video call.',
+        'When you click buttons to deactivate either camera or mic, the application no longer accesses that device.',
+        'When another user enters into the chat room, it will inform you through a message. Users can communicate through messages.'
+    ], skills: [skills.REACT, skills.TYPESCRIPT, skills.NODEJS, skills.EXPRESS, skills.SOCKETIO],
+    link: "https://chat-app-0tg7.onrender.com"
+}
 // Return data
 export type ProjectCategory = 'XR' | 'WEB';
-export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact' | 'Nomflix' | 'CovidTracker';
+export type ProjectIDType = 'K21' | 'Suspension' | 'Crane' | 'Governor' | 'PinkiTalk2021' | 'ToDoList' | 'ToDoListReact' | 'Nomflix' | 'CovidTracker' | 'YoutubeClone' | 'ChatApp';
 export const projects = {
     K21: 'K21',
     SUSPENSION: 'Suspension',
@@ -159,6 +184,8 @@ export const projects = {
     ToDoList: 'ToDoList',
     ToDoListReact: 'ToDoListReact',
     Nomflix: 'Nomflix',
-    CovidTracker: 'CovidTracker'
+    CovidTracker: 'CovidTracker',
+    YoutubeClone: 'YoutubeClone',
+    ChatApp: 'ChatApp'
 }
-export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact, Nomflix, CovidTracker };
+export const projectsDetail = { K21, Suspension, Crane, Governor, PinkiTalk2021, ToDoList, ToDoListReact, Nomflix, CovidTracker, YoutubeClone, ChatApp };

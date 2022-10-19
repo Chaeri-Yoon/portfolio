@@ -9,7 +9,8 @@ export default () => {
             <ProjectItem thumbnail={`/images/projects/Web/${projects.ToDoListReact}.jpg`} projectID={projects.ToDoListReact}></ProjectItem>
             <ProjectItem thumbnail={`/images/projects/Web/${projects.Nomflix}.jpg`} projectID={projects.Nomflix}></ProjectItem>
             <ProjectItem thumbnail={`/images/projects/Web/${projects.CovidTracker}.jpg`} projectID={projects.CovidTracker}></ProjectItem>
-            <ProjectItem thumbnail='' projectID={''}></ProjectItem>
+            <ProjectItem thumbnail={`/images/projects/Web/${projects.YoutubeClone}.jpg`} projectID={projects.YoutubeClone}></ProjectItem>
+            <ProjectItem thumbnail={`/images/projects/Web/${projects.ChatApp}.jpg`} projectID={projects.ChatApp}></ProjectItem>
         </>
     )
 }
