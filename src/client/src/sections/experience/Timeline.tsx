@@ -4,7 +4,7 @@ const Container = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin: 0 0.5% -1% 0.5%;
+    margin: 0 0.5% -0.8% 0.5%;
 `;
 const Box = styled.div`
     flex: 1;
