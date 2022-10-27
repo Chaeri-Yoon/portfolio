@@ -1,21 +1,45 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose from "mongoose";
 
-export interface IUser extends Document {
-    email: string,
-    nickname: string,
-    hash: string,
-    salt: string,
-    carts: Schema.Types.ObjectId[]
-}
-const schema = new Schema < IUser > ({
-    email: String,
-    nickname: String,
-    hash: String,
-    salt: String,
-    carts: [{
-        type: [Schema.Types.ObjectId],
-        ref: 'Cart'
-    }]
+const schema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        enum: ['XR', 'WEB'],
+        default: 'XR',
+        required: true
+    },
+    main_image: {
+        type: String,
+        required: true
+    },
+    page_introduction: {
+        type: String,
+        required: false
+    },
+    page_descriptions: {
+        type: [String],
+        required: true
+    },
+    page_visuals: {
+        type: [String],
+        required: true
+    },
+    skills: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Skill',
+        required: true
+    }],
+    link: {
+        type: String,
+        required: false
+    },
+    video: {
+        type: String,
+        required: false
+    }
 });
-const model = mongoose.models?.User || mongoose.model < IUser > ('User', schema);
+const model = mongoose.model('Project', schema);
 export default model;
