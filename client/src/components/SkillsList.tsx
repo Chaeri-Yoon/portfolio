@@ -13,13 +13,12 @@ const Item = styled.li`
     justify-content: center;
     align-items: center;
 `;
-const Image = styled.div<{ skillname: string }>`
+const Image = styled.div<{ skillname: string, image: string }>`
     width: 100%;
     aspect-ratio: 1 / 1;
     border: 1px solid rgba(0, 0, 0, .3);
     border-radius: 50%;
-    
-    background-image: url(${({ skillname }) => `/images/skills/${skillname}.png`});
+    background-image: url(${({ image }) => image});
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -32,8 +31,8 @@ export default ({ children }: any) => {
         </ItemsList>
     )
 }
-export const Skill = ({ skillname }: { skillname: string }) => {
+export const Skill = ({ skillname, image }: { skillname: string, image: string }) => {
     return (
-        <Item><Image skillname={skillname} /></Item>
+        <Item><Image skillname={skillname} image={image} /></Item>
     )
 }

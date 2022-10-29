@@ -13,11 +13,11 @@ const SkillsContainer = styled(ItemsList)`
 export default ({ projectID }: { projectID: ProjectIDType }) => {
     return (
         <Container>
-            <SkillsContainer>
+            {/* <SkillsContainer>
                 {projectsDetail[projectID].skills.map((skill, i) => (
                     <Skill key={i} skillname={skill} />
                 ))}
-            </SkillsContainer>
+            </SkillsContainer> */}
         </Container>
     )
 }

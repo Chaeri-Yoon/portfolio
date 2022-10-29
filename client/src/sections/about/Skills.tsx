@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import styled from "styled-components"
 import SkillsList, { Skill } from "@components/SkillsList";
-import { skills } from "@data";
+// Tried to use craco-alias, but it seems to have some issue. Will be figured out.
+// import useApi from "@utils";
+import useApi from '../../utils/useApi';
+import { IResponse, ISkill } from "src/types";
 
 const Container = styled.div`
     width: 100%;
@@ -14,24 +18,17 @@ const Skills = styled.div`
     flex-direction: column;
     align-items: flex-start;
 `;
-const Title = styled.span`
-    padding: 0.4em 0;
-    font-size: 1.3em;
-    font-weight: bold;
-`;
+interface ISkills extends IResponse {
+    skills: ISkill[]
+}
 export default () => {
+    const [getSkills, { data }] = useApi<ISkills, null>(`${process.env.REACT_APP_SERVER_URL}/skills`)
+    useEffect(() => getSkills(), []);
     return (
         <Container>
             <Skills>
-                <Title>Top Skills</Title>
                 <SkillsList>
-                    {skills.topList.map((skill, i) => <Skill key={i} skillname={skill} />)}
-                </SkillsList>
-            </Skills>
-            <Skills>
-                <Title>Experience</Title>
-                <SkillsList>
-                    {skills.experienceList.map((skill, i) => <Skill key={i} skillname={skill} />)}
+                    {data?.skills?.map((skill, i) => <Skill key={i} skillname={skill.name} image={skill.image} />)}
                 </SkillsList>
             </Skills>
         </Container>

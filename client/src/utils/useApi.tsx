@@ -1,16 +1,17 @@
 import { useState } from "react"
+import { IResponse } from "src/types";
 interface IState<T> {
-    data: T,
+    data: T | null,
     isLoading: boolean,
-    error?: string
+    error?: object
 }
-export default <T = any, S = any>(url: string): [(data: S) => void, IState<T>] => {
+export default <T extends IResponse, S = any>(url: string): [(data?: S) => void, IState<T>] => {
     const [state, setState] = useState<IState<T>>({
-        data: {} as T,
+        data: null,
         isLoading: false,
         error: undefined
     });
-    const callApi = (data: S) => {
+    const callApi = (data?: S) => {
         setState(prev => ({ ...prev, loading: true }));
         fetch(url, {
             method: 'GET',
