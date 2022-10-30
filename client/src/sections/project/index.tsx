@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Modal from "@components/Modal";
 import ModeButtons, { ModeButton } from "@components/ModeButtons";
 import ProjectDetail from "@sections/project/ProjectDetail";
-import Web from "@sections/project/Web";
-import XR from "@sections/project/XR";
-import { ProjectCategory, ProjectIDType } from "@data";
+import useApi from "../../utils/useApi";
+import { IProject, IResponse } from "src/types";
+import ProjectItem from "./ProjectItem";
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -26,27 +26,34 @@ const ProjectList = styled.ul`
     column-gap: 1em;
     row-gap: 1em;
 `;
-
+type ICategory = 'XR' | 'WEB';
+interface IProjects extends IResponse {
+    projects: IProject[]
+}
 export default () => {
-    const [category, setCategory] = useState<ProjectCategory>('XR');
-    const [projectID, setProjectID] = useState<ProjectIDType>('K21');
+    const [getProjects, { data }] = useApi<IProjects, null>(`${process.env.REACT_APP_SERVER_URL}/projects`)
+    const [category, setCategory] = useState<ICategory>('XR');
+    const [projectID, setProjectID] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleCategoryChange = (value: ProjectCategory) => setCategory(value);
-    const handleProjectClick = (event: React.MouseEvent<HTMLElement>) => {
-        const { id } = event.target as HTMLElement;
-        if (!id) return;
-        setProjectID(id as ProjectIDType);
+    const handleCategoryChange = (value: ICategory) => setCategory(value);
+    const handleProjectClick = (id: string) => {
+        setProjectID(id);
         setIsModalOpen(true);
     }
     const handleProjectModalClose = () => setIsModalOpen(false);
+    useEffect(() => getProjects(), []);
     return (
         <Container>
             <ModeButtons>
                 <ModeButton isactive={`${category === 'XR'}`} text='XR' kind='SectionMode' handleModeClick={() => handleCategoryChange('XR')} />
                 <ModeButton isactive={`${category === 'WEB'}`} text='WEB' kind='SectionMode' handleModeClick={() => handleCategoryChange('WEB')} />
             </ModeButtons>
-            <ProjectList onClick={handleProjectClick}>
-                {category === 'XR' ? <XR /> : <Web />}
+            <ProjectList>
+                {data?.projects?.map(
+                    project => project.category === category && (
+                        <ProjectItem key={project._id} id={project._id} thumbnail={project.main_image} clickHandler={handleProjectClick} />
+                    )
+                )}
             </ProjectList>
             {isModalOpen && (
                 <Modal handleClose={handleProjectModalClose}>

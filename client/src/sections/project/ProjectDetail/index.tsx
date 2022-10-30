@@ -35,7 +35,7 @@ const Content = styled.div`
     align-items: flex-start;
 `;
 export type TabType = 'INTRO' | 'ABOUT' | 'SKILLS';
-export default ({ projectCategory, projectID }: { projectCategory: ProjectCategory, projectID: ProjectIDType }) => {
+export default ({ projectCategory, projectID }: { projectCategory: ProjectCategory, projectID: string }) => {
     const [tab, setTab] = useState<TabType>(projectCategory === 'XR' ? 'INTRO' : 'ABOUT');
     const handleTabClick = (value: TabType) => setTab(value);
     return (
@@ -52,9 +52,9 @@ export default ({ projectCategory, projectID }: { projectCategory: ProjectCatego
                 {tab === 'ABOUT' && (
                     <ProjectDetailItem mode="ABOUT" projectCategory={projectCategory} projectID={projectID} />
                 )}
-                {tab === 'SKILLS' && (
+                {/* {tab === 'SKILLS' && (
                     <ProjectSkills projectID={projectID} />
-                )}
+                )} */}
             </Content>
         </Container>
     )

@@ -58,7 +58,7 @@ const DemoURL = styled.span`
         font-weight: 600;
     }
 `;
-export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, projectCategory?: ProjectCategory, projectID: ProjectIDType }) => {
+export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, projectCategory?: ProjectCategory, projectID: string }) => {
     // For 'About' Tab
     const [curPageNum, setCurPageNum] = useState(0);
     const handlePageNumButton = (event: React.MouseEvent<HTMLElement>) => {
@@ -69,7 +69,7 @@ export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, pr
     //
     return (
         <Container>
-            <VisualContainer onClick={handlePageNumButton}>
+            {/* <VisualContainer onClick={handlePageNumButton}>
                 {mode === 'INTRO' && <video controls autoPlay src={`/videos/projects/${projectID}.mp4`} />}
                 {mode === 'ABOUT' && projectCategory === 'XR' && <Video pageNums={projectsDetail[projectID].pageNums} curPageNum={curPageNum} projectID={projectID} />}
                 {mode === 'ABOUT' && projectCategory === 'WEB' && (
@@ -90,7 +90,7 @@ export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, pr
                         &gt; Check out <a href={projectsDetail[projectID]?.link} target="_blank">{projectsDetail[projectID]?.link}</a>
                     </DemoURL>
                 )}
-            </DescriptionContainer>
+            </DescriptionContainer> */}
         </Container>
     )
 }

@@ -17,10 +17,10 @@ const Clickable = styled.button`
         opacity: 0.5;
     }
 `;
-export default ({ thumbnail, projectID }: { thumbnail: string, projectID: string }) => {
+export default ({ thumbnail, id, clickHandler }: { thumbnail: string, id: string, clickHandler: (id: string) => void }) => {
     return (
         <Item thumbnail={thumbnail}>
-            <Clickable id={projectID} />
+            <Clickable id={id} onClick={() => clickHandler(id)} />
         </Item>
     )
 }
