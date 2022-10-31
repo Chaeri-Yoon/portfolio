@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components"
 import { ModeButton } from "@components/ModeButtons";
 import ProjectSkills from "@sections/project/ProjectDetail/ProjectSkills";
 import ProjectDetailItem from "./ProjectDetailItem";
-import { ProjectIDType } from "@data";
-import { ProjectCategory } from "@data";
+import { ICategory, IProject, IResponse } from "src/types";
+import useApi from "../../../utils/useApi";
 
 const Container = styled.div`
     width: 100%;
@@ -34,27 +34,32 @@ const Content = styled.div`
     justify-content: center;
     align-items: flex-start;
 `;
+interface IProjectData extends IResponse {
+    project: IProject
+}
 export type TabType = 'INTRO' | 'ABOUT' | 'SKILLS';
-export default ({ projectCategory, projectID }: { projectCategory: ProjectCategory, projectID: string }) => {
-    const [tab, setTab] = useState<TabType>(projectCategory === 'XR' ? 'INTRO' : 'ABOUT');
+export default ({ category, id }: { category: ICategory, id: string }) => {
+    const [getProject, { data }] = useApi<IProjectData, null>(`${process.env.REACT_APP_SERVER_URL}/project/${id}`)
+    const [tab, setTab] = useState<TabType>(category === 'XR' ? 'INTRO' : 'ABOUT');
     const handleTabClick = (value: TabType) => setTab(value);
+    useEffect(() => getProject(), []);
     return (
         <Container>
             <TabArea>
-                {projectCategory === 'XR' && <ModeButton isactive={`${tab === 'INTRO'}`} text='INTRO' kind='ProjectDetail' handleModeClick={() => handleTabClick('INTRO')} />}
+                {category === 'XR' && <ModeButton isactive={`${tab === 'INTRO'}`} text='INTRO' kind='ProjectDetail' handleModeClick={() => handleTabClick('INTRO')} />}
                 <ModeButton isactive={`${tab === 'ABOUT'}`} text='ABOUT' kind='ProjectDetail' handleModeClick={() => handleTabClick('ABOUT')} />
                 <ModeButton isactive={`${tab === 'SKILLS'}`} text='SKILLS' kind='ProjectDetail' handleModeClick={() => handleTabClick('SKILLS')} />
             </TabArea>
             <Content>
                 {tab === 'INTRO' && (
-                    <ProjectDetailItem mode="INTRO" projectID={projectID} />
+                    data?.project && <ProjectDetailItem mode="INTRO" data={data.project} />
                 )}
                 {tab === 'ABOUT' && (
-                    <ProjectDetailItem mode="ABOUT" projectCategory={projectCategory} projectID={projectID} />
+                    data?.project && <ProjectDetailItem mode="ABOUT" category={category} data={data.project} />
                 )}
-                {/* {tab === 'SKILLS' && (
-                    <ProjectSkills projectID={projectID} />
-                )} */}
+                {tab === 'SKILLS' && (
+                    data?.project && <ProjectSkills skills={data.project.skills} />
+                )}
             </Content>
         </Container>
     )

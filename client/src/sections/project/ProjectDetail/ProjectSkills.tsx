@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ItemsList, Skill } from "@components/SkillsList";
-import { ProjectIDType, projectsDetail } from "@data";
+import { ISkill } from '../../../types';
 import '@styles/variables.css'
 
 const Container = styled.div`
@@ -10,14 +10,14 @@ const Container = styled.div`
 const SkillsContainer = styled(ItemsList)`
     grid-template-columns: repeat(auto-fill, 15%);
 `;
-export default ({ projectID }: { projectID: ProjectIDType }) => {
+export default ({ skills }: { skills: ISkill[] }) => {
     return (
         <Container>
-            {/* <SkillsContainer>
-                {projectsDetail[projectID].skills.map((skill, i) => (
-                    <Skill key={i} skillname={skill} />
+            <SkillsContainer>
+                {skills?.map((skill, i) => (
+                    <Skill key={i} name={skill.name} image={skill.image} />
                 ))}
-            </SkillsContainer> */}
+            </SkillsContainer>
         </Container>
     )
 }

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { ProjectIDType, ProjectCategory, projectsDetail } from "@data";
 import { TabType } from ".";
 import PageButtons from "./About/PageButtons";
+import { ICategory, IProject } from "src/types";
 
 const Container = styled.div`
     width: 95%;
@@ -26,10 +26,10 @@ const VisualContainer = styled.div`
         background-color: black;
     }
 `;
-const Image = styled.div<{ page: number, projectID: ProjectIDType }>`
+const Image = styled.div<{ page: number, id: string }>`
     width: 100%;
     height: 100%;
-    background-image: url(${({ page, projectID }) => `/images/projects/Web/${projectID}/${projectID}_${page + 1}.jpg`});
+    background-image: url(${({ page, id }) => `/images/projects/Web/${id}/${id}_${page + 1}.jpg`});
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -58,7 +58,7 @@ const DemoURL = styled.span`
         font-weight: 600;
     }
 `;
-export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, projectCategory?: ProjectCategory, projectID: string }) => {
+export default ({ mode, category = 'XR', data }: { mode: TabType, category?: ICategory, data: IProject }) => {
     // For 'About' Tab
     const [curPageNum, setCurPageNum] = useState(0);
     const handlePageNumButton = (event: React.MouseEvent<HTMLElement>) => {
@@ -69,44 +69,42 @@ export default ({ mode, projectCategory = 'XR', projectID }: { mode: TabType, pr
     //
     return (
         <Container>
-            {/* <VisualContainer onClick={handlePageNumButton}>
-                {mode === 'INTRO' && <video controls autoPlay src={`/videos/projects/${projectID}.mp4`} />}
-                {mode === 'ABOUT' && projectCategory === 'XR' && <Video pageNums={projectsDetail[projectID].pageNums} curPageNum={curPageNum} projectID={projectID} />}
-                {mode === 'ABOUT' && projectCategory === 'WEB' && (
+            <VisualContainer onClick={handlePageNumButton}>
+                {mode === 'INTRO' && <video controls autoPlay src={`${process.env.REACT_APP_SERVER_URL}/${data.video}`} />}
+                {mode === 'ABOUT' && category === 'XR' && <Video pageNums={data.page_descriptions.length} curPageNum={curPageNum} source={data.page_visuals[curPageNum]} />}
+                {mode === 'ABOUT' && category === 'WEB' && (
                     <>
-                        <Image page={curPageNum} projectID={projectID} />
-                        <PageButtons pageNums={projectsDetail[projectID].pageNums} curPageNum={curPageNum} />
+                        <Image page={curPageNum} id={data._id} />
+                        <PageButtons pageNums={data.page_descriptions.length} curPageNum={curPageNum} />
                     </>
                 )}
             </VisualContainer>
             <DescriptionContainer>
                 <p>
-                    {mode === 'INTRO' && projectsDetail[projectID].introduction}
-                    {mode === 'ABOUT' && projectsDetail[projectID].descriptions[curPageNum]}
+                    {mode === 'INTRO' && data.page_introduction}
+                    {mode === 'ABOUT' && data.page_descriptions[curPageNum]}
                 </p>
-                {mode === 'ABOUT' && projectCategory === 'WEB' && curPageNum === 0 && (
+                {mode === 'ABOUT' && category === 'WEB' && curPageNum === 0 && (
                     <DemoURL>
                         <br />
-                        &gt; Check out <a href={projectsDetail[projectID]?.link} target="_blank">{projectsDetail[projectID]?.link}</a>
+                        &gt; Check out <a href={data.link} target="_blank">{data.link}</a>
                     </DemoURL>
                 )}
-            </DescriptionContainer> */}
+            </DescriptionContainer>
         </Container>
     )
 }
 interface IVideo {
     pageNums: number;
     curPageNum: number;
-    projectID: ProjectIDType;
+    source: string;
 }
-const Video = ({ pageNums, curPageNum, projectID }: IVideo) => {
+const Video = ({ pageNums, curPageNum, source }: IVideo) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     useEffect(() => videoRef?.current?.load(), [curPageNum]);
     return (
         <>
-            <video autoPlay loop ref={videoRef}>
-                <source src={`/videos/projects/about/${projectID}/${projectID}_${curPageNum + 1}.mp4`} />,
-            </video>
+            <video autoPlay loop ref={videoRef} src={`${process.env.REACT_APP_SERVER_URL}/${source}`} />
             <PageButtons pageNums={pageNums} curPageNum={curPageNum} />
         </>
     )

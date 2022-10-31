@@ -4,7 +4,7 @@ import Modal from "@components/Modal";
 import ModeButtons, { ModeButton } from "@components/ModeButtons";
 import ProjectDetail from "@sections/project/ProjectDetail";
 import useApi from "../../utils/useApi";
-import { IProject, IResponse } from "src/types";
+import { ICategory, IProject, IResponse } from "src/types";
 import ProjectItem from "./ProjectItem";
 const Container = styled.div`
     width: 100%;
@@ -26,7 +26,6 @@ const ProjectList = styled.ul`
     column-gap: 1em;
     row-gap: 1em;
 `;
-type ICategory = 'XR' | 'WEB';
 interface IProjects extends IResponse {
     projects: IProject[]
 }
@@ -57,7 +56,7 @@ export default () => {
             </ProjectList>
             {isModalOpen && (
                 <Modal handleClose={handleProjectModalClose}>
-                    <ProjectDetail projectCategory={category} projectID={projectID} />
+                    <ProjectDetail category={category} id={projectID} />
                 </Modal>
             )}
         </Container>

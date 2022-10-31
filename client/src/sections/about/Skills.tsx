@@ -28,7 +28,7 @@ export default () => {
         <Container>
             <Skills>
                 <SkillsList>
-                    {data?.skills?.map((skill, i) => <Skill key={i} skillname={skill.name} image={skill.image} />)}
+                    {data?.skills?.map((skill, i) => <Skill key={i} name={skill.name} image={skill.image} />)}
                 </SkillsList>
             </Skills>
         </Container>
