@@ -26,10 +26,10 @@ const VisualContainer = styled.div`
         background-color: black;
     }
 `;
-const Image = styled.div<{ page: number, id: string }>`
+const Image = styled.div<{ image: string }>`
     width: 100%;
     height: 100%;
-    background-image: url(${({ page, id }) => `/images/projects/Web/${id}/${id}_${page + 1}.jpg`});
+    background-image: url(${({ image }) => image});
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -74,7 +74,7 @@ export default ({ mode, category = 'XR', data }: { mode: TabType, category?: ICa
                 {mode === 'ABOUT' && category === 'XR' && <Video pageNums={data.page_descriptions.length} curPageNum={curPageNum} source={data.page_visuals[curPageNum]} />}
                 {mode === 'ABOUT' && category === 'WEB' && (
                     <>
-                        <Image page={curPageNum} id={data._id} />
+                        <Image image={data.page_visuals[curPageNum]} />
                         <PageButtons pageNums={data.page_descriptions.length} curPageNum={curPageNum} />
                     </>
                 )}
