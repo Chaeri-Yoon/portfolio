@@ -1,4 +1,3 @@
-import { skills } from "@data";
 import styled from "styled-components";
 
 export const ItemsList = styled.ul`
@@ -22,7 +21,7 @@ const Image = styled.div<{ name: string, image: string }>`
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: ${({ name }) => name === skills.TYPESCRIPT ? "#217BD4" : (name === skills.BOOTSTRAP ? "#673AB7" : "white")};
+    background-color: ${({ name }) => name === "TYPESCRIPT" ? "#217BD4" : (name === "BOOTSTRAP" ? "#673AB7" : "white")};
 `;
 export default ({ children }: any) => {
     return (
